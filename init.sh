@@ -1,5 +1,12 @@
 #!/bin/bash
 
+NIX_USER = "tom"
+
+# If this is being run as root then need to set for tom (can be configured by user)
+if [ $HOME -eq "" ]; then
+  HOME=$(echo ~$NIX_USER)
+fi
+
 # install Nix
 curl -L https://nixos.org/nix/install | sh
 
