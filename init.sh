@@ -7,9 +7,8 @@ curl -L https://nixos.org/nix/install | sh
 . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 
 # check that nix installed correctly
-nix-env --list-generations
-if [ $? -q 0 ]; then
-  echo "Nix is installed correctly, continuing..."
+if nix-env --list-generations ; then
+  echo "Nix is installed correctly! continuing..."
 else
   echo "Nix failed to install correctly, exiting..."
   exit 1;
