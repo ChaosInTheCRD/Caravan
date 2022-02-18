@@ -1,5 +1,5 @@
-resource "google_compute_instance_template" "caravan" {
-  name = "caravan"
+resource "google_compute_instance_template" "caravan_ubuntu" {
+  name = "caravan-ubuntu"
   project = var.project
   region = var.region
   instance_description = "Where I code when I'm on the road"
@@ -32,5 +32,11 @@ resource "google_compute_instance_template" "caravan" {
   tags = ["http-server", "https-server"]
 
   machine_type = var.machine_type
-  metadata_startup_script = file("../../init.sh")
+  metadata_startup_script = <<SCRIPT
+  #! /bin/bash
+
+  cd /home/tom
+  git clone https://github.com/chaosinthecrd/caravan.git
+  sudo -u tom bash -c 'chmod +x /home/tom/caravan/init.sh; /home/tom/caravan/init.sh';
+  SCRIPT
 }

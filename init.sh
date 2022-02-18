@@ -1,13 +1,5 @@
 #!/bin/bash
 
-NIX_USER="tom"
-
-# If this is being run as root then need to set for tom (can be configured by user)
-if [ -z "$HOME" ]; then
-  sudo adduser tom
-  HOME=$(echo ~$NIX_USER)
-fi
-
 # install Nix
 curl -L https://nixos.org/nix/install | sh
 
@@ -30,10 +22,10 @@ export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/
 nix-shell '<home-manager>' -A install
 
 # remove the default config
-rm ~/.config/nixpkgs/home.nix
+rm $HOME/.config/nixpkgs/home.nix
 
 # clone this repo into the repository
-git clone https://github.com/chaosinthecrd/caravan.git ~/.config/nixpkgs --depth 1
+git clone https://github.com/chaosinthecrd/caravan.git $HOME/.config/nixpkgs --depth 1
 
 # perform home-manager switch
 home-manager switch
