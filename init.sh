@@ -1,9 +1,10 @@
 #!/bin/bash
 
-NIX_USER = "tom"
+NIX_USER="tom"
 
 # If this is being run as root then need to set for tom (can be configured by user)
-if [ $HOME -eq "" ]; then
+if [ -z "$HOME" ]; then
+  sudo adduser tom
   HOME=$(echo ~$NIX_USER)
 fi
 
