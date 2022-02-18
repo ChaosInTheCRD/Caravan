@@ -37,6 +37,7 @@ resource "google_compute_instance_template" "caravan_ubuntu" {
 
   cd /home/tom
   git clone https://github.com/chaosinthecrd/caravan.git
-  sudo -u tom bash -c 'chmod +x /home/tom/caravan/init.sh; /home/tom/caravan/init.sh';
+  sudo -u tom bash -c '/home/tom/caravan/init.sh';
+  rm -r /home/tom/caravan
   SCRIPT
 }
