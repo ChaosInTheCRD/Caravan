@@ -3,14 +3,15 @@
   let
     # Import extra files
     # zshSettings = import ./confg/zsh/zsh.nix;
-    customNeovim = import ./nvim/nvim.nix;
   
   in
   {
+    imports = [
+      ./configs/nvim/neovim.nix
+    ];
+
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
-    # Source extra config files
-    programs.neovim = customNeovim pkgs;
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
@@ -43,6 +44,8 @@
         rnix-lsp
         sumneko-lua-language-server
         terraform-ls
+        terraform-lsp
+        gopls
     ];
 
   }
