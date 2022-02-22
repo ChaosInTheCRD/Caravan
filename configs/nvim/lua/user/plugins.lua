@@ -62,8 +62,9 @@ return packer.startup(function(use)
   -- Tom's plugins
   use 'mfussenegger/nvim-lint'
   use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
-
-
+  use {'fannheyward/coc-pyright', branch = 'master', run = 'yarn install --frozen-lockfile'}
+  use {'neoclide/coc-json', branch = 'master', run = 'yarn install --frozen-lockfile'}
+  use {'josa42/coc-sh', branch = 'master', run = 'yarn install --frozen-lockfile'}
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"

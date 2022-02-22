@@ -8,6 +8,7 @@
   {
     imports = [
       ./configs/nvim/neovim.nix
+      ./configs/zsh/zsh.nix
     ];
 
     # Let Home Manager install and manage itself.
@@ -27,17 +28,19 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     home.stateVersion = "22.05";
-    
+
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
 
         # Command-line tools
-        fzf ripgrep newsboat ffmpeg tealdeer exa 
-        pass gnupg slop bat tmux wireguard unzip xclip
-        libnotify sct update-nix-fetchgit lowdown
+        fzf ripgrep argo bat colordiff cowsay colima
+        gawk kubectx kubectl google-cloud-sdk kustomize
+        helmfile helm htop hugo k3s k9s krew stern 
+        minikube neofetch octant sipcalc terraform
+        terragrunt tmate tree wget
        
         # Development
-        git gcc gnumake python3 go nodejs cargo
+        git gcc gnumake python3 go nodejs cargo go yarn
 
         # Language servers for neovim; change these to whatever languages you code in
         # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
@@ -46,6 +49,8 @@
         terraform-ls
         terraform-lsp
         gopls
+        nodePackages.dockerfile-language-server-nodejs
+        nodePackages.bash-language-server
     ];
 
   }

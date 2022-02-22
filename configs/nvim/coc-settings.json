@@ -1,0 +1,32 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+    "nix": {
+    "command": "rnix-lsp",
+    "filetypes": ["nix"]
+    },
+    "terraform": {
+    "command": "terraform-ls",
+    "args": ["serve"],
+    "filetypes": ["terraform", "tf"],
+    "initializationOptions": {}
+    },
+    "dockerfile": {
+    "command": "docker-langserver",
+    "filetypes": ["dockerfile"],
+    "args": ["--stdio"]
+    },
+    "efm": {
+    "command": "efm-langserver",
+    "args": [],
+    // custom config path
+    // "args": ["-c", "/path/to/your/config.yaml"],
+    "filetypes": ["vim", "eruby", "markdown", "yaml"]
+    }
+  }
+}

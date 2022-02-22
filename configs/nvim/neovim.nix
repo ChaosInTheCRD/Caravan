@@ -19,7 +19,8 @@ in
   # `init.lua`.
   xdg.configFile."nvim/lua".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
   xdg.configFile."nvim/colors".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/colors";
-
+  xdg.configFile."nvim/coc-settings.json".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/coc-settings.json";
+  
   programs.neovim.extraConfig = ''
     set nocompatible
 
