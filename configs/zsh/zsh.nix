@@ -38,7 +38,7 @@ in
       theme = "pure-space";
       custom = "\$HOME/.zsh-themes/";
       plugins = [
-        "git"
+        "git" "z"
       ];
     };
 
