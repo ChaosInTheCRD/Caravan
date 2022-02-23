@@ -2,7 +2,6 @@
 
   let
     # Import extra files
-    # zshSettings = import ./confg/zsh/zsh.nix;
   
   in
   {
