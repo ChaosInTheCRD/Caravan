@@ -59,16 +59,6 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
 
-  -- Tom's plugins
-  use 'mfussenegger/nvim-lint'
-  use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
-  use {'fannheyward/coc-pyright', branch = 'master', run = 'yarn install --frozen-lockfile'}
-  use {'neoclide/coc-json', branch = 'master', run = 'yarn install --frozen-lockfile'}
-  use {'josa42/coc-sh', branch = 'master', run = 'yarn install --frozen-lockfile'}
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
-
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions

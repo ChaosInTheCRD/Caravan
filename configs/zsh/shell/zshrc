@@ -1,4 +1,6 @@
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+if test -f "$HOME/.nix-profile/etc/profile.d/nix.sh"; then
+  source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
 
 # Directories to be prepended to $PATH
 declare -a dirs_to_prepend
