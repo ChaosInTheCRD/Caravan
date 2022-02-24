@@ -90,6 +90,17 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
 
+  -- Colorschemes
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/darkplus.nvim"
+
+  -- Tom's plugins
+  use 'mfussenegger/nvim-lint'
+  use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
+  use {'fannheyward/coc-pyright', branch = 'master', run = 'yarn install --frozen-lockfile'}
+  use {'neoclide/coc-json', branch = 'master', run = 'yarn install --frozen-lockfile'}
+  use {'josa42/coc-sh', branch = 'master', run = 'yarn install --frozen-lockfile'}
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

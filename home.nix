@@ -16,7 +16,7 @@
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     home.username = "tom";
-    home.homeDirectory = "/home/tom";
+    home.homeDirectory = "/Users/tom";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -34,7 +34,7 @@
         # Command-line tools
         fzf ripgrep argo bat colordiff cowsay colima
         gawk kubectx kubectl google-cloud-sdk kustomize
-        helmfile helm htop hugo k3s k9s krew stern 
+        helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
         terragrunt tmate tree wget
        
