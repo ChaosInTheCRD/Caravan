@@ -15,8 +15,11 @@
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
+
+    arch=$(uname -s)
+
+    home.homeDirectory = if arch = "Darwin" then "/Users/tom" else "/home/tom";
     home.username = "tom";
-    home.homeDirectory = "/Users/tom";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
