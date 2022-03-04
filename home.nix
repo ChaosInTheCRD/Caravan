@@ -2,7 +2,7 @@
 
   let
     # Import extra files
-  
+    inherit (pkgs) stdenv;
   in
   {
     imports = [
@@ -17,9 +17,7 @@
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
 
-    arch=$(uname -s)
-
-    home.homeDirectory = if arch = "Darwin" then "/Users/tom" else "/home/tom";
+    home.homeDirectory = if stdenv.isLinux then "/home/tom" else "/Users/tom";
     home.username = "tom";
 
     # This value determines the Home Manager release that your
@@ -41,7 +39,7 @@
         helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
         terragrunt tmate tree wget
-       
+
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn
 

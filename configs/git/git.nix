@@ -1,8 +1,12 @@
-programs.git = {
-  enable = true;
-  userName = "ChaosInTheCRD";
-  userEmail = "thomas.meadows@jetstack.io";
-  aliases = {
-    st = "status";
-  };
-};
+{ pkgs, ... }:
+
+{
+    programs.git = {
+      enable = true;
+      userName = "ChaosInTheCRD";
+      userEmail = "thomas.meadows@jetstack.io";
+      aliases = {
+        st = "status";
+      };
+    };
+}
