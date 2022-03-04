@@ -8,6 +8,7 @@
     imports = [
       ./configs/nvim/neovim.nix
       ./configs/zsh/zsh.nix
+      ./configs/git/git.nix
     ];
 
     # Let Home Manager install and manage itself.
