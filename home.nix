@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
   let
     # Import extra files
     inherit (pkgs) stdenv;
@@ -15,11 +14,8 @@
       ./configs/nvim/neovim.nix
       ./configs/zsh/zsh.nix
       ./configs/git/git.nix
-    ];
-
-    macImports = [
       ./configs/ubersicht/ubersicht.nix
-    ]
+    ];
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
@@ -42,7 +38,7 @@
         gawk kubectx kubectl google-cloud-sdk kustomize
         helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
-        terragrunt tmate tree wget
+        terragrunt tmate tree wget ngrok
 
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn
