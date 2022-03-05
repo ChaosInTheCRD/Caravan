@@ -1,3 +1,4 @@
+configs/ubersicht/widgets/UeberPlayer.widget/*.png
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup
