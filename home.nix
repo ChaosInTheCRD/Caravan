@@ -15,6 +15,7 @@
       ./configs/zsh/zsh.nix
       ./configs/git/git.nix
       ./configs/ubersicht/ubersicht.nix
+      ./configs/brew/brew.nix
     ];
 
     # Let Home Manager install and manage itself.
