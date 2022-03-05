@@ -9,6 +9,8 @@ alias vi="nvim"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
+alias brewme="brew bundle install ~/.config/brew/Brewfile"
+
 # easily update home-manager config
 alias nixupdate="home-manager switch"
 
