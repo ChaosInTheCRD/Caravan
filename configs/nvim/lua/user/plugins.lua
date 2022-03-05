@@ -96,6 +96,9 @@ return packer.startup(function(use)
 
   -- Tom's plugins
   use 'mfussenegger/nvim-lint'
+  use 'srstevenson/vim-topiary'
+
+  -- Coc Stuff
   use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
   use {'fannheyward/coc-pyright', branch = 'master', run = 'yarn install --frozen-lockfile'}
   use {'neoclide/coc-json', branch = 'master', run = 'yarn install --frozen-lockfile'}

@@ -1,59 +1,61 @@
 { config, pkgs, ... }:
 
-{
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
+  let
+    # Import extra files
+    inherit (pkgs) stdenv;
+  in
+  {
+    # Home Manager needs a bit of information about you and the
+    # paths it should manage.
 
-  arch=$(uname -s)
+    home.homeDirectory = if stdenv.isLinux then "/home/tom" else "/Users/tom";
+    home.username = "tom";
 
-  home.homeDirectory = if arch = "Darwin" then "/Users/tom" else "/home/tom";
-  home.username = "tom";
+    imports = [
+      ./configs/nvim/neovim.nix
+      ./configs/zsh/zsh.nix
+      ./configs/git/git.nix
+    ];
 
-  imports = [
-    ./configs/nvim/neovim.nix
-    ./configs/zsh/zsh.nix
-    ./configs/git/git.nix
-  ];
+    macImports = [
+      ./configs/ubersicht/ubersicht.nix
+    ]
 
-  macImports = [
-    ./configs/ubersicht/ubersicht.nix
-  ]
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    home.stateVersion = "22.05";
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
+    nixpkgs.config.allowUnfree = true;
+    home.packages = with pkgs; [
 
-  nixpkgs.config.allowUnfree = true;
-  home.packages = with pkgs; [
+        # Command-line tools
+        fzf ripgrep argo bat colordiff cowsay colima
+        gawk kubectx kubectl google-cloud-sdk kustomize
+        helmfile kubernetes-helm htop hugo k9s krew stern
+        minikube neofetch octant sipcalc terraform
+        terragrunt tmate tree wget
 
-      # Command-line tools
-      fzf ripgrep argo bat colordiff cowsay colima
-      gawk kubectx kubectl google-cloud-sdk kustomize
-      helmfile kubernetes-helm htop hugo k9s krew stern
-      minikube neofetch octant sipcalc terraform
-      terragrunt tmate tree wget
+        # Development
+        git gcc gnumake python3 go nodejs cargo go yarn
 
-      # Development
-      git gcc gnumake python3 go nodejs cargo go yarn
+        # Language servers for neovim; change these to whatever languages you code in
+        # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
+        rnix-lsp
+        sumneko-lua-language-server
+        terraform-ls
+        terraform-lsp
+        gopls
+        nodePackages.dockerfile-language-server-nodejs
+        nodePackages.bash-language-server
+    ];
 
-      # Language servers for neovim; change these to whatever languages you code in
-      # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
-      rnix-lsp
-      sumneko-lua-language-server
-      terraform-ls
-      terraform-lsp
-      gopls
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.bash-language-server
-  ];
-
-}
+  }
