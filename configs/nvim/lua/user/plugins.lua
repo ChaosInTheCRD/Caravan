@@ -103,7 +103,7 @@ return packer.startup(function(use)
   use {'fannheyward/coc-pyright', branch = 'master', run = 'yarn install --frozen-lockfile'}
   use {'neoclide/coc-json', branch = 'master', run = 'yarn install --frozen-lockfile'}
   use {'josa42/coc-sh', branch = 'master', run = 'yarn install --frozen-lockfile'}
-
+  use {'nestorscaleda/vim-strip-trailing-whitespaces'}
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

@@ -16,10 +16,15 @@
       ./configs/git/git.nix
       ./configs/ubersicht/ubersicht.nix
       ./configs/brew/brew.nix
+      ./configs/alacritty/alacritty.nix
     ];
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
+
+    # Home Manager needs a bit of information about you and the
+    # paths it should manage.
+    fonts.fontconfig.enable = true;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -44,6 +49,7 @@
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn
 
+
         # Language servers for neovim; change these to whatever languages you code in
         # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
         rnix-lsp
@@ -53,6 +59,8 @@
         gopls
         nodePackages.dockerfile-language-server-nodejs
         nodePackages.bash-language-server
-    ];
 
+        # fonts
+        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+    ];
   }
