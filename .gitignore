@@ -1,4 +1,5 @@
 configs/ubersicht/widgets/UeberPlayer.widget/cache
+configs/ubersicht/widgets/UeberPlayer.widget/lib/currentTrack.plist
 .DS_Store
 .terraform/
 terraform.tfstate
