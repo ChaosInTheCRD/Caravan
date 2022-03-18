@@ -7,5 +7,5 @@ in
 
 {
   # Config and -------------------------------------------------------------------------
-  xdg.configFile."alacritty/alacritty.yml".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/alacritty.yml";
+  xdg.configFile."alacritty.yml".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/alacritty/alacritty.yml";
 }

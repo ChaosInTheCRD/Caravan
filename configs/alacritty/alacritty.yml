@@ -12,8 +12,8 @@ window:
 
   # Padding on the edge of the window (this is not empty space on the desktop)
   padding:
-    x: 4
-    y: 4
+    x: 10
+    y: 10
 
 font:
   normal:
@@ -23,7 +23,7 @@ font:
   size: 16.0
 
 shell:
-  program: /Users/tom/.nix-profile/bin/zsh 
+  program: /Users/tom/.nix-profile/bin/zsh
   args:
     - -c
     - cd ~/Git && exec zsh

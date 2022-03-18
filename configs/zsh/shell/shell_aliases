@@ -6,6 +6,8 @@
 
 alias vim="nvim"
 alias vi="nvim"
+alias k="kubectl"
+alias kc="kubectl"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 

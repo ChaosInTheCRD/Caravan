@@ -5,3 +5,5 @@ configs/ubersicht/widgets/UeberPlayer.widget/lib/currentTrack.plist
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
+Brewfile.lock.json
+configs/ubersicht/.DS_Store

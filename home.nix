@@ -17,6 +17,7 @@
       ./configs/ubersicht/ubersicht.nix
       ./configs/brew/brew.nix
       ./configs/alacritty/alacritty.nix
+      ./configs/yabai/yabai.nix
     ];
 
     # Let Home Manager install and manage itself.
@@ -44,11 +45,10 @@
         gawk kubectx kubectl google-cloud-sdk kustomize
         helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
-        terragrunt tmate tree wget ngrok
+        terragrunt tmate tree wget ngrok watch git-crypt gnupg gpg-tui cosign jq docker-client
 
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn
-
 
         # Language servers for neovim; change these to whatever languages you code in
         # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
