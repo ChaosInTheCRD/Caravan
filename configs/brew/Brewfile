@@ -1,6 +1,7 @@
 tap "argoproj/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/core"
 tap "khanhas/tap"
 tap "koekeishiya/formulae"
