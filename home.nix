@@ -41,11 +41,11 @@
     home.packages = with pkgs; [
 
         # Command-line tools
-        fzf ripgrep argo bat colordiff cowsay colima
+        fzf ripgrep argo argocd bat colordiff cowsay colima
         gawk kubectx kubectl google-cloud-sdk kustomize
         helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
-        terragrunt tmate tree wget ngrok watch git-crypt gnupg gpg-tui cosign jq docker-client
+        terragrunt tmate tree wget ngrok watch git-crypt gnupg gpg-tui cosign jq docker-client starship
 
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn

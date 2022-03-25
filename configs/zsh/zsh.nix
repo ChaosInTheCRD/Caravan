@@ -35,8 +35,6 @@ in
     '' + extraInitExtra;
     oh-my-zsh = {
       enable = true;
-      theme = "pure-space";
-      custom = "\$HOME/.zsh-themes/";
       plugins = [
         "git" "z"
       ];

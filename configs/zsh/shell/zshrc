@@ -42,3 +42,5 @@ export PATH
 # Source local extra (private) settings specific to machine if it exists
 [ -f ~/.zsh.local ] && source ~/.zsh.local
 
+# run starship
+eval "$(starship init zsh)"
