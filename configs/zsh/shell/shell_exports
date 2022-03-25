@@ -10,6 +10,8 @@ export WLR_DRM_NO_MODIFIERS=1
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
+export KUBECONFIG=$HOME/.kube/config
+
 # set virtualenvwrapper to global python3
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
