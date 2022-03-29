@@ -46,6 +46,7 @@
         helmfile kubernetes-helm htop hugo k9s krew stern
         minikube neofetch octant sipcalc terraform
         terragrunt tmate tree wget ngrok watch git-crypt gnupg gpg-tui cosign jq docker-client starship
+        syft
 
         # Development
         git gcc gnumake python3 go nodejs cargo go yarn
