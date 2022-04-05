@@ -19,6 +19,7 @@ push-nix() {
 
 sync-nix() {
     cd ~/.config/nixpkgs
+    git add .
     git stash
     git checkout main
     git pull origin main
