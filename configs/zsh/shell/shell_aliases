@@ -7,7 +7,6 @@
 # temporary stuff
 alias argosecret="kubectl -n argo-cd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d | pbcopy"
 
-
 alias vim="nvim"
 alias vi="nvim"
 
@@ -17,9 +16,8 @@ alias kc="kubectl"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
-
-# Brew up new casks when they're added! 
-alias brewme="brew bundle install --file ~/.config/brew/Brewfile"
+# Brew up new casks when they're added!
+alias yabrew="brew bundle install --file ~/.config/brew/Brewfile"
 
 # easily update home-manager config
 alias unix="home-manager switch"
