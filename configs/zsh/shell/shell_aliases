@@ -4,6 +4,10 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# temporary stuff
+alias argosecret="kubectl -n argo-cd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d | pbcopy"
+
+
 alias vim="nvim"
 alias vi="nvim"
 
@@ -13,10 +17,15 @@ alias kc="kubectl"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
-alias brewme="brew bundle install ~/.config/brew/Brewfile"
+
+# Brew up new casks when they're added! 
+alias brewme="brew bundle install --file ~/.config/brew/Brewfile"
 
 # easily update home-manager config
-alias nixupdate="home-manager switch"
+alias unix="home-manager switch"
+alias znix="cd ~/.config/nixpkgs"
+alias snix="cd ~/.config/nixpkgs && git status && cd -"
+alias dnix="cd ~/.config/nixpkgs && git diff && cd -"
 
 # fuzzy search for file and open in vim
 alias vf="vim \$(fzf)"

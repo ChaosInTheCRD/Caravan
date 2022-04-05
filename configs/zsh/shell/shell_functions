@@ -9,15 +9,21 @@ cf() {
 }
 
 # sync caravan repo
-caravan-push() {
+push-nix() {
+    cd ~/.config/nixpkgs
     git add .
     git commit -a -m "$1"
     git push
+    cd -
   }
 
-caravan-sync() {
+sync-nix() {
     cd ~/.config/nixpkgs
+    git stash
     git checkout main
     git pull origin main
+    git stash pop
     home-manager switch
+    push-nix "sync-nix performed on $(date)"
+    cd -
 }
