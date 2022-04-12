@@ -9,13 +9,15 @@ alias argosecret="kubectl -n argo-cd get secret argocd-initial-admin-secret -o j
 
 alias vim="nvim"
 alias vi="nvim"
-
+alias watch="watch "
 alias kubectl="kube-lock kubectl --"
 alias k="kubectl"
 alias kc="kubectl"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
+# bat
+alias cat="bat "
 # Brew up new casks when they're added!
 alias yabrew="brew bundle install --file ~/.config/brew/Brewfile"
 
