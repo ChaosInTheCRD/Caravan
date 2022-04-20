@@ -32,7 +32,6 @@ in
     lua require ("user.telescope")
     lua require ("user.treesitter")
     lua require ("user.autopairs")
-    lua require ("user.comment")
     lua require ("user.gitsigns")
     lua require ("user.nvim-tree")
     lua require ("user.bufferline")

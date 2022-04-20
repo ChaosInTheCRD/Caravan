@@ -11,7 +11,6 @@ tap "pomerium/tap"
 tap "qmk/qmk"
 brew "koekeishiya/formulae/yabai", args: ['HEAD']
 brew "koekeishiya/formulae/skhd"
-brew "khanhas/tap/spicetify-cli", link: false
 brew "hyperkit"
 cask "alacritty"
 cask "dozer"

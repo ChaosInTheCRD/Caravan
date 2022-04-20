@@ -45,7 +45,6 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "akinsho/bufferline.nvim"
@@ -97,6 +96,7 @@ return packer.startup(function(use)
   -- Tom's plugins
   use 'mfussenegger/nvim-lint'
   use 'srstevenson/vim-topiary'
+  use 'towolf/vim-helm'
 
   -- Coc Stuff
   use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
