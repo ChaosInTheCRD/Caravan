@@ -57,7 +57,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
     ] ++ (with unstable; [      
-      neovim terraform terragrunt
+      terraform terragrunt neovim
   ]);
 
   }

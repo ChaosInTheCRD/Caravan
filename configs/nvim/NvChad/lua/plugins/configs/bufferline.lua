@@ -39,7 +39,7 @@ local options = {
          right = function()
             return {
                { text = "%@Toggle_theme@" .. vim.g.toggle_theme_icon .. "%X" },
-               { text = "%@Quit_vim@  %X" },
+               { text = "%@Quit_vim@ %X" },
             }
          end,
       },
@@ -65,6 +65,6 @@ local options = {
 }
 
 -- check for any override
-options = require("core.utils").load_override(options, "akinsho/bufferline.nvim")
+options = nvchad.load_override(options, "akinsho/bufferline.nvim")
 
 bufferline.setup(options)
