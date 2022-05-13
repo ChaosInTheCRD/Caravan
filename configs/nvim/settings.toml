@@ -1,0 +1,12 @@
+#MaxDisplayItems = 30# Goneovim settings.toml
+## All of the following commented configuration items have default values.
+
+[Editor]
+## Makes the application window frameless.
+BorderlessWindow = true
+
+FontFamily = "JetBrainsMono Nerd Font"
+
+FontSize = 15
+
+SmoothScroll = true

@@ -2,6 +2,7 @@
  let
     # Import extra files
     inherit (pkgs) stdenv;
+    unstable = import <unstable> {};
   in
   {
     # Home Manager needs a bit of information about you and the
@@ -41,28 +42,22 @@
     home.packages = with pkgs; [
 
         # Command-line tools
-        fzf ripgrep argo argocd bat colordiff cowsay colima
+        fzf ripgrep argo argocd bat colordiff cowsay toilet colima
         gawk kubectx kubectl google-cloud-sdk kustomize
         helmfile kubernetes-helm htop hugo k9s krew stern
-        minikube neofetch octant sipcalc terraform
-        terragrunt tmate tree wget ngrok watch git-crypt gnupg gpg-tui cosign jq docker-client starship
-        syft diceware glow spicetify-cli speedtest-cli
+
+        minikube neofetch octant sipcalc tmate tree wget ngrok
+        watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
 
         # Development
-        git gcc gnumake python3 go nodejs cargo go yarn
-
-        # Language servers for neovim; change these to whatever languages you code in
-        # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
-        rnix-lsp
-        sumneko-lua-language-server
-        terraform-ls
-        terraform-lsp
-        gopls
-        nodePackages.dockerfile-language-server-nodejs
-        nodePackages.bash-language-server
+        git gcc gnumake python3 go nodejs cargo go yarn protobuf
 
         # fonts
-        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; })
-    ];
+
+        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+
+    ] ++ (with unstable; [      
+      neovim terraform terragrunt
+  ]);
 
   }
