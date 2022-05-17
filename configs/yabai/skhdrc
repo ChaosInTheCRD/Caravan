@@ -10,6 +10,9 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
+# Changes windows from vertical to horizontal split
+shift + alt - space : yabai -m window --toggle split
+
 # Move focus container to workspace
 shift + alt - 1 : yabai -m window --space 1
 shift + alt - 2 : yabai -m window --space 2
