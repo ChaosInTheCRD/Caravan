@@ -28,3 +28,15 @@ sync-nix() {
     push-nix "sync-nix performed on $(date)"
     cd -
 }
+
+kc-patch-secret() {
+  local value
+  value=$(echo "$3" | base64)
+  kubectl patch secret "$1" --type='json' -p='[{"op" : "replace" ,"path" : '$2' ,"value" : '$value'}]'
+}
+
+kc-decode-secret() {
+  local value
+  value=$(kubectl get secret "$1" -o jsonpath="{$2}")
+  echo "$value" | base64 -d
+}
