@@ -10,13 +10,13 @@ M.ui = {
 }
 
 M.plugins = {
+
    options = {
     lspconfig = {
        setup_lspconf = "custom.plugins.lspconfig",
     },
   },
    status = {
-     alpha = true,
      colorizer = true,
    },
 }

@@ -45,4 +45,4 @@ yabai -m signal --add event=space_changed action="osascript -e 'tell application
 yabai -m signal --add event=display_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
 
-yabai -m rule --add app="Google Chrome" title="Picture in Picture" manage=off
+yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" sticky=on layer=above manage=off

@@ -13,13 +13,16 @@ alias watch="watch "
 alias kubectl="kube-lock kubectl --"
 alias k="kubectl"
 alias kc="kubectl"
+
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
 # bat
 alias cat="bat "
+
 # spicetify
 alias spicetify="spicetify-cli "
+
 # Brew up new casks when they're added!
 alias yabrew="brew bundle install --file ~/.config/brew/Brewfile"
 
