@@ -1,3 +1,7 @@
+# reload yabai
+shift + alt - r : brew services restart yabai && brew services restart skhd
+
+
 # Navigation
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
@@ -9,6 +13,9 @@ shift + alt - h : yabai -m window --warp west
 shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
+
+# Changes windows from verticle to horizontal split
+shift + alt - space : yabai -m window --toggle split
 
 # Move focus container to workspace
 shift + alt - 1 : yabai -m window --space 1
@@ -54,14 +61,27 @@ shift + alt - space : yabai -m window --toggle float
 # Make fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
 
-# Change desktop
-ctrl - 1 : yabai -m space --focus 1
-ctrl - 2 : yabai -m space --focus 2
-ctrl - 3 : yabai -m space --focus 3
-ctrl - 4 : yabai -m space --focus 4
-ctrl - 5 : yabai -m space --focus 5
-ctrl - 6 : yabai -m space --focus 6
-ctrl - 7 : yabai -m space --focus 7
+# ctrl - 1 : yabai -m space --focus 1
+# ctrl - 2 : yabai -m space --focus 2
+# ctrl - 3 : yabai -m space --focus 3
+# ctrl - 4 : yabai -m space --focus 4
+# ctrl - 5 : yabai -m space --focus 5
+# ctrl - 6 : yabai -m space --focus 6
+# ctrl - 7 : yabai -m space --focus 7
 
 shift + ctrl + alt - n : osascript -e 'tell application "Spotify" to Next Track'
 shift + ctrl + alt - p : osascript -e 'tell application "Spotify" to Previous Track'
+
+shift + ctrl + alt - up : osascript -e 'tell application "Spotify" to set sound volume to 100'
+shift + ctrl + alt - down : osascript -e 'tell application "Spotify" to set sound volume to 20'
+
+# open finder to file storage drive
+shift + cmd - o : open /Users/tom
+
+# volume contorl
+shift + alt - down : osascript -e "set volume output volume ((output volume of (get volume settings)) - 2)"
+shift + alt - up : osascript -e "set volume output volume ((output volume of (get volume settings)) + 2)"
+
+# open apps: terminal(t), browser(b)
+shift + cmd - b : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+shift + cmd - t : /Applications/Alacritty.app/Contents/MacOS/alacritty

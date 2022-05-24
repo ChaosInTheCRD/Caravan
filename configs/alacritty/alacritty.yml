@@ -28,6 +28,3 @@ shell:
   args:
     - -c
     - cd ~/Git && exec zsh
-
-key_bindings:
-  - { key: Key3,     mods: Alt,     chars: "#"                        }

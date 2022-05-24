@@ -42,9 +42,9 @@
     home.packages = with pkgs; [
 
         # Command-line tools
-        fzf ripgrep argo argocd bat colordiff cowsay toilet colima
+        coreutils fzf ripgrep argo argocd bat colordiff cowsay toilet colima
         gawk kubectx kubectl google-cloud-sdk kustomize
-        helmfile kubernetes-helm htop hugo k9s krew stern
+        helmfile kubernetes-helm htop hugo k9s krew stern 
 
         minikube neofetch octant sipcalc tmate tree wget ngrok
         watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
@@ -57,7 +57,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
     ] ++ (with unstable; [      
-      terraform terragrunt neovim
+      terraform terragrunt neovim ko
   ]);
 
   }
