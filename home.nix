@@ -50,14 +50,18 @@
         watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
 
         # Development
-        git gcc gnumake python3 go nodejs cargo go yarn protobuf
+        git gcc gnumake python3 nodejs cargo go yarn protobuf
 
         # fonts
 
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
     ] ++ (with unstable; [      
-      terraform terragrunt neovim ko trivy syft grype
+<<<<<<< Updated upstream
+      terraform terragrunt neovim ko trivy syft grype go_1_18
+=======
+      terraform terragrunt neovim ko go_1_18
+>>>>>>> Stashed changes
   ]);
 
   }

@@ -12,6 +12,8 @@ FontSize = 15
 SmoothScroll = true
 
 FileOpenCmd = ":tabe"
+
+Transparent = 0.95
 [MiniMap]
 ## To view the minimap, launch an additional nvim instance;
 ## setting Disable to true will not launch this additional nvim instance
