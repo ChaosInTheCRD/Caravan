@@ -44,9 +44,9 @@
         # Command-line tools
         coreutils fzf ripgrep argo argocd bat colordiff cowsay toilet colima
         gawk kubectx kubectl google-cloud-sdk kustomize
-        helmfile kubernetes-helm htop hugo k9s krew stern 
+        helmfile kubernetes-helm htop hugo k9s krew stern crane
 
-        minikube neofetch octant sipcalc tmate tree wget ngrok
+        minikube kind neofetch octant sipcalc tmate tree wget ngrok
         watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
 
         # Development
@@ -57,7 +57,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
     ] ++ (with unstable; [      
-      terraform terragrunt neovim ko
+      terraform terragrunt neovim ko trivy syft grype
   ]);
 
   }

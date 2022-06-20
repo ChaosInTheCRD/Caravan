@@ -29,6 +29,7 @@ alias yabrew="brew bundle install --file ~/.config/brew/Brewfile"
 
 # easily update home-manager config
 alias unix="home-manager switch"
+alias nixedit="vim ~/.config/nixpkgs/home.nix"
 alias znix="cd ~/.config/nixpkgs"
 alias snix="cd ~/.config/nixpkgs && git status && cd -"
 alias dnix="cd ~/.config/nixpkgs && git diff && cd -"
