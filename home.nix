@@ -57,7 +57,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
     ] ++ (with unstable; [      
-      terraform terragrunt neovim ko trivy syft grype go_1_18
+      terraform terragrunt neovim ko trivy grype go_1_18 syft
   ]);
 
   }
