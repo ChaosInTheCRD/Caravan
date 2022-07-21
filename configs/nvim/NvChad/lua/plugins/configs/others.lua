@@ -1,39 +1,25 @@
 local M = {}
 
+local load_override = require("core.utils").load_override
+
 M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
    local present2, cmp = pcall(require, "cmp")
 
-   if not present1 and present2 then
-      return
-   end
-
-   autopairs.setup {
-      fast_wrap = {},
-      disable_filetype = { "TelescopePrompt", "vim" },
-   }
-
-   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-
-   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-end
-
-M.better_escape = function()
-   local present, escape = pcall(require, "better_escape")
-
-   if not present then
+   if not (present1 and present2) then
       return
    end
 
    local options = {
-      mapping = { "jk" }, -- a table with mappings to use
-      timeout = vim.o.timeoutlen,
-      clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-      keys = "<Esc>",
+      fast_wrap = {},
+      disable_filetype = { "TelescopePrompt", "vim" },
    }
 
-   options = nvchad.load_override(options, "max397574/better-escape.nvim")
-   escape.setup(options)
+   options = load_override(options, "windwp/nvim-autopairs")
+   autopairs.setup(options)
+
+   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 M.blankline = function()
@@ -43,9 +29,10 @@ M.blankline = function()
       return
    end
 
+   require("base46").load_highlight "blankline"
+
    local options = {
       indentLine_enabled = 1,
-      char = "▏",
       filetype_exclude = {
          "help",
          "terminal",
@@ -54,16 +41,17 @@ M.blankline = function()
          "lspinfo",
          "TelescopePrompt",
          "TelescopeResults",
-         "nvchad_cheatsheet",
          "lsp-installer",
          "",
       },
       buftype_exclude = { "terminal" },
       show_trailing_blankline_indent = false,
       show_first_indent_level = false,
+      show_current_context = true,
+      show_current_context_start = true,
    }
 
-   options = nvchad.load_override(options, "lukas-reineke/indent-blankline.nvim")
+   options = load_override(options, "lukas-reineke/indent-blankline.nvim")
    blankline.setup(options)
 end
 
@@ -87,16 +75,14 @@ M.colorizer = function()
          hsl_fn = false, -- CSS hsl() and hsla() functions
          css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
          css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-
-         -- Available modes: foreground, background
          mode = "background", -- Set the display mode.
       },
    }
 
-   options = nvchad.load_override(options, "NvChad/nvim-colorizer.lua")
-
+   options = load_override(options, "NvChad/nvim-colorizer.lua")
    colorizer.setup(options["filetypes"], options["user_default_options"])
-   vim.cmd "ColorizerReloadAllBuffers"
+
+   vim.cmd "ColorizerAttachToBuffer"
 end
 
 M.comment = function()
@@ -106,7 +92,9 @@ M.comment = function()
       return
    end
 
-   nvim_comment.setup()
+   local options = {}
+   options = load_override(options, "numToStr/Comment.nvim")
+   nvim_comment.setup(options)
 end
 
 M.luasnip = function()
@@ -116,81 +104,26 @@ M.luasnip = function()
       return
    end
 
-   luasnip.config.set_config {
+   local options = {
       history = true,
       updateevents = "TextChanged,TextChangedI",
    }
 
+   options = load_override(options, "L3MON4D3/LuaSnip")
+   luasnip.config.set_config(options)
    require("luasnip.loaders.from_vscode").lazy_load()
-end
+   require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
 
-M.signature = function()
-   local present, lsp_signature = pcall(require, "lsp_signature")
-
-   if not present then
-      return
-   end
-
-   local options = {
-      bind = true,
-      doc_lines = 0,
-      floating_window = true,
-      fix_pos = true,
-      hint_enable = true,
-      hint_prefix = " ",
-      hint_scheme = "String",
-      hi_parameter = "Search",
-      max_height = 22,
-      max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-      handler_opts = {
-         border = "single", -- double, single, shadow, none
-      },
-      zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-      padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-   }
-
-   options = nvchad.load_override(options, "ray-x/lsp_signature.nvim")
-   lsp_signature.setup(options)
-end
-
-M.lsp_handlers = function()
-   local function lspSymbol(name, icon)
-      local hl = "DiagnosticSign" .. name
-      vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-   end
-
-   lspSymbol("Error", "")
-   lspSymbol("Info", "")
-   lspSymbol("Hint", "")
-   lspSymbol("Warn", "")
-
-   vim.diagnostic.config {
-      virtual_text = {
-         prefix = "",
-      },
-      signs = true,
-      underline = true,
-      update_in_insert = false,
-   }
-
-   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "single",
+   vim.api.nvim_create_autocmd("InsertLeave", {
+      callback = function()
+         if
+            require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+            and not require("luasnip").session.jump_active
+         then
+            require("luasnip").unlink_current()
+         end
+      end,
    })
-   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "single",
-   })
-
-   -- suppress error messages from lang servers
-   vim.notify = function(msg, log_level)
-      if msg:match "exit code" then
-         return
-      end
-      if log_level == vim.log.levels.ERROR then
-         vim.api.nvim_err_writeln(msg)
-      else
-         vim.api.nvim_echo({ { msg } }, true, {})
-      end
-   end
 end
 
 M.gitsigns = function()
@@ -200,7 +133,9 @@ M.gitsigns = function()
       return
    end
 
-   gitsigns.setup {
+   require("base46").load_highlight "git"
+
+   local options = {
       signs = {
          add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
          change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
@@ -209,21 +144,22 @@ M.gitsigns = function()
          changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
       },
    }
+
+   options = load_override(options, "lewis6991/gitsigns.nvim")
+   gitsigns.setup(options)
 end
 
-M.misc_mappings = function()
-   local map = nvchad.map
+M.devicons = function()
+   local present, devicons = pcall(require, "nvim-web-devicons")
 
-   -- Don't copy the replaced text after pasting in visual mode
-   map("v", "p", '"_dP')
+   if present then
+      require("base46").load_highlight "devicons"
 
-   -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-   -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-   -- empty mode is same as using :map
-   -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-   map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-   map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
-   map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-   map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+      local options = { override = require("ui.icons").devicons }
+      options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+
+      devicons.setup(options)
+   end
 end
+
 return M

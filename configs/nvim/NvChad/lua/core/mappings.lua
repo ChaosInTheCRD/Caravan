@@ -1,4 +1,4 @@
--- n, v, i are mode names
+-- n, v, i, t = mode names
 
 local function termcodes(str)
    return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -7,6 +7,16 @@ end
 local M = {}
 
 M.general = {
+   [""] = {
+      -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+      -- http<cmd> ://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+      -- empty mode is same as using <cmd> :map
+      -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+      ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+      ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+      ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+      ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+   },
 
    i = {
 
@@ -22,6 +32,8 @@ M.general = {
    },
 
    n = {
+
+      ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
 
       -- switch between windows
       ["<C-h>"] = { "<C-w>h", " window left" },
@@ -52,24 +64,34 @@ M.general = {
    },
 
    t = {
-      ["jk"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
+      ["<C-x>"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
+   },
+
+   v = {
+      -- Don't copy the replaced text after pasting in visual mode
+      -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+      ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
    },
 }
 
-M.bufferline = {
+M.tabufline = {
 
    n = {
       -- new buffer
       ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
       -- cycle through buffers
-      ["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-      ["<S-Tab>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
+      ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
+      ["<S-Tab>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+
+      -- cycle through tabs
+      ["<leader>tp"] = { "<cmd> tabprevious <CR>", "  goto next tab" },
+      ["<leader>tn"] = { "<cmd> tabnext <CR> ", "  goto prev tab" },
 
       -- close buffer + hide terminal buffer
       ["<leader>x"] = {
          function()
-            nvchad.close_buffer()
+            require("core.utils").close_buffer()
          end,
          "   close buffer",
       },
@@ -129,7 +151,7 @@ M.lspconfig = {
          "   lsp implementation",
       },
 
-      ["<C-k>"] = {
+      ["<leader>ls"] = {
          function()
             vim.lsp.buf.signature_help()
          end,
@@ -145,7 +167,7 @@ M.lspconfig = {
 
       ["<leader>ra"] = {
          function()
-            vim.lsp.buf.rename()
+            require("nvchad_ui.renamer").open()
          end,
          "   lsp rename",
       },
@@ -336,6 +358,26 @@ M.whichkey = {
             vim.cmd("WhichKey " .. input)
          end,
          "   which-key query lookup",
+      },
+   },
+}
+
+M.blankline = {
+   n = {
+      ["<leader>bc"] = {
+         function()
+            local ok, start = require("indent_blankline.utils").get_current_context(
+               vim.g.indent_blankline_context_patterns,
+               vim.g.indent_blankline_use_treesitter_scope
+            )
+
+            if ok then
+               vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+               vim.cmd [[normal! _]]
+            end
+         end,
+
+         "  Jump to current_context",
       },
    },
 }
