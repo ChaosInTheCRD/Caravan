@@ -4,6 +4,8 @@ if not present then
    return
 end
 
+require("base46").load_highlight "alpha"
+
 local function button(sc, txt, keybind)
    local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
 
@@ -72,7 +74,7 @@ options.buttons = {
    },
 }
 
-options = nvchad.load_override(options, "goolord/alpha-nvim")
+options = require("core.utils").load_override(options, "goolord/alpha-nvim")
 
 -- dynamic header padding
 local fn = vim.fn

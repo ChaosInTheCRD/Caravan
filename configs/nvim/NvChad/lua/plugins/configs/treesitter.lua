@@ -4,10 +4,12 @@ if not present then
    return
 end
 
+require("base46").load_highlight "syntax"
+require("base46").load_highlight "treesitter"
+
 local options = {
    ensure_installed = {
       "lua",
-      "vim",
    },
    highlight = {
       enable = true,
@@ -16,6 +18,6 @@ local options = {
 }
 
 -- check for any override
-options = nvchad.load_override(options, "nvim-treesitter/nvim-treesitter")
+options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
 
 treesitter.setup(options)

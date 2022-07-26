@@ -4,6 +4,8 @@ if not present then
    return
 end
 
+require "base46.term"
+
 local options = {
    terminals = {
       list = {},
@@ -27,6 +29,6 @@ local options = {
    enable_new_mappings = true,
 }
 
-options = nvchad.load_override(options, "NvChad/nvterm")
+options = require("core.utils").load_override(options, "NvChad/nvterm")
 
 nvterm.setup(options)

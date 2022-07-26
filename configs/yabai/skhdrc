@@ -1,7 +1,6 @@
 # reload yabai
 shift + alt - r : brew services restart yabai && brew services restart skhd
 
-
 # Navigation
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
@@ -18,7 +17,7 @@ shift + alt - l : yabai -m window --warp east
 shift + alt - space : yabai -m window --toggle split
 
 # Move focus container to workspace
-shift + alt - 1 : yabai -m window --space 1
+shift + alt - 1 : yabai -m space --focus 1
 shift + alt - 2 : yabai -m window --space 2
 shift + alt - 3 : yabai -m window --space 3
 shift + alt - 4 : yabai -m window --space 4
@@ -26,7 +25,6 @@ shift + alt - 5 : yabai -m window --space 5
 shift + alt - 6 : yabai -m window --space 6
 shift + alt - 7 : yabai -m window --space 7
 shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
 
 # Resize windows
 ctrl + alt - h : \
@@ -60,14 +58,6 @@ shift + alt - space : yabai -m window --toggle float
 
 # Make fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
-
-# ctrl - 1 : yabai -m space --focus 1
-# ctrl - 2 : yabai -m space --focus 2
-# ctrl - 3 : yabai -m space --focus 3
-# ctrl - 4 : yabai -m space --focus 4
-# ctrl - 5 : yabai -m space --focus 5
-# ctrl - 6 : yabai -m space --focus 6
-# ctrl - 7 : yabai -m space --focus 7
 
 shift + ctrl + alt - n : osascript -e 'tell application "Spotify" to Next Track'
 shift + ctrl + alt - p : osascript -e 'tell application "Spotify" to Previous Track'
