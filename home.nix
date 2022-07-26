@@ -44,20 +44,28 @@
         # Command-line tools
         coreutils fzf ripgrep argo argocd bat colordiff cowsay toilet colima
         gawk kubectx kubectl google-cloud-sdk kustomize
-        helmfile kubernetes-helm htop hugo k9s krew stern crane
+        helmfile kubernetes-helm htop hugo k9s krew stern crane diffoscope
 
         minikube kind neofetch octant sipcalc tmate tree wget ngrok
         watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
 
         # Development
-        git gcc gnumake python3 nodejs cargo go yarn protobuf
+        git gcc gnumake python3 nodejs cargo go yarn protobuf bazel bazelisk lima
+
+        # Extra Stuff
+        bazel bazelisk lima 
 
         # fonts
 
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 
-    ] ++ (with unstable; [      
-      terraform terragrunt neovim ko trivy grype go_1_18 syft
+    ] ++ (with unstable; [
+
+      # Command-Line tools (Needs latest versions)
+      neovim trivy grype syft
+
+      # Development (Needs latest versions)
+      terraform terragrunt ko go_1_18
   ]);
 
   }

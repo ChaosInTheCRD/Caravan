@@ -1,5 +1,6 @@
 import UserWidgets from './lib/components/data/user-widgets.jsx'
 import * as Zoom from './lib/components/data/zoom.jsx'
+import * as CPUTemp from './lib/components/data/cpuTemp.jsx'
 import * as Time from './lib/components/data/time.jsx'
 import * as DateDisplay from './lib/components/data/date-display.jsx'
 import * as Weather from './lib/components/data/weather.jsx'
@@ -47,7 +48,8 @@ Utils.injectStyles('simple-bar-data-styles', [
   BrowserTrack.styles,
   Dnd.styles,
   Specter.styles,
-  DataWidgetLoader.styles
+  DataWidgetLoader.styles,
+  CPUTemp.styles
 ])
 
 const render = () => {
@@ -67,6 +69,7 @@ const render = () => {
       <Spotify.Widget />
       <Crypto.Widget />
       <Stock.Widget />
+      <CPUTemp.Widget />
       <Music.Widget />
       <Mpd.Widget />
       <Weather.Widget />

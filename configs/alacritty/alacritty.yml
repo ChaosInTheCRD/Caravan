@@ -23,11 +23,12 @@ font:
   # Point size of the font
   size: 16.0
 
-shell:
-  program: /Users/tom/.nix-profile/bin/zsh
-  args:
-    - -c
-    - cd ~/Git && exec zsh
+# shell:
+#   program: /Users/tom/.nix-profile/bin/limactl
+#   args:
+#     - shell
+#     - ubuntu
+#     - zsh
 
 # Colors (Gruvbox dark)
 colors:

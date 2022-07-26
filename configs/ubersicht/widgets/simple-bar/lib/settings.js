@@ -132,6 +132,7 @@ export const data = {
   widgets: { label: 'Widgets' },
   processWidget: { label: 'Process name', type: 'checkbox' },
   zoomWidget: { label: 'Zoom', type: 'checkbox' },
+  cpuTempWidget: { label: 'CPUTemp', type: 'checkbox' },
   timeWidget: { label: 'Time', type: 'checkbox' },
   dateWidget: { label: 'Date', type: 'checkbox' },
   wifiWidget: { label: 'Network', type: 'checkbox' },
@@ -197,6 +198,8 @@ export const data = {
   zoomWidgetOptions: { label: 'Zoom status' },
   showVideo: { label: 'Show video status', type: 'checkbox' },
   showMic: { label: 'Show mic status', type: 'checkbox' },
+
+  cpuTempWidgetOptions: { label: 'CPU Temp status' },
 
   soundWidgetOptions: { label: 'Sound' },
   micWidgetOptions: { label: 'Mic' },
@@ -329,6 +332,7 @@ export const defaultSettings = {
     wifiWidget: true,
     vpnWidget: false,
     zoomWidget: false,
+    cpuTempWidget: false,
     soundWidget: true,
     micWidget: true,
     dateWidget: true,
@@ -368,6 +372,9 @@ export const defaultSettings = {
     refreshFrequency: 5000,
     showVideo: true,
     showMic: true
+  },
+  cpuTempWidgetOptions: {
+    refreshFrequency: 30000
   },
   soundWidgetOptions: {
     refreshFrequency: 20000
