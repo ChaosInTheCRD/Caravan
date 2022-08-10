@@ -50,7 +50,7 @@
         watch git-crypt gnupg gpg-tui cosign jq docker-client starship diceware glow spicetify-cli
 
         # Development
-        git gcc gnumake python3 nodejs cargo go yarn protobuf bazel bazelisk lima
+        git gcc gnumake python38 nodejs cargo go yarn protobuf bazel bazelisk lima
 
         # Extra Stuff
         bazel bazelisk lima 

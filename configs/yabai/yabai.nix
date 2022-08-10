@@ -9,4 +9,5 @@ in
   # Config -------------------------------------------------------------------------
   xdg.configFile."yabai/yabairc".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/yabai/yabairc";
   xdg.configFile."skhd/skhdrc".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/yabai/skhdrc";
+  xdg.configFile."spacebar/spacebarrc".source = mkOutOfStoreSymlink "${nixConfigDir}/configs/yabai/spacebarrc";
 }

@@ -13,11 +13,8 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
-# Changes windows from vertical to horizontal split
-shift + alt - space : yabai -m window --toggle split
-
 # Move focus container to workspace
-shift + alt - 1 : yabai -m space --focus 1
+shift + alt - 1 : yabai -m window --space 1
 shift + alt - 2 : yabai -m window --space 2
 shift + alt - 3 : yabai -m window --space 3
 shift + alt - 4 : yabai -m window --space 4
@@ -25,6 +22,10 @@ shift + alt - 5 : yabai -m window --space 5
 shift + alt - 6 : yabai -m window --space 6
 shift + alt - 7 : yabai -m window --space 7
 shift + alt - 8 : yabai -m window --space 8
+shift + alt - 9 : yabai -m window --space 9
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
 
 # Resize windows
 ctrl + alt - h : \
@@ -43,9 +44,21 @@ ctrl + alt - l : \
     yabai -m window --resize right:100:0 ; \
     yabai -m window --resize left:100:0
 
-# Float and center window
-shift + alt - c : yabai -m window --toggle float;\
-                yabai -m window --grid 4:4:1:1:2:2
+# toggle window split type
+alt - s : yabai -m window --toggle split
+
+# toggle window fullscreen zoom
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle padding and gap
+alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# float / unfloat window and center on ecreen
+alt - c : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
+
+# balance size of windows
+shift + alt - 0 : yabai -m space --balance
 
 # Set insertion point for focused container
 shift + ctrl + alt - h : yabai -m window --insert west
@@ -53,25 +66,15 @@ shift + ctrl + alt - j : yabai -m window --insert south
 shift + ctrl + alt - k : yabai -m window --insert north
 shift + ctrl + alt - l : yabai -m window --insert east
 
-# Float / Unfloat window
-shift + alt - space : yabai -m window --toggle float
-
-# Make fullscreen
-alt - f         : yabai -m window --toggle zoom-fullscreen
-
 shift + ctrl + alt - n : osascript -e 'tell application "Spotify" to Next Track'
 shift + ctrl + alt - p : osascript -e 'tell application "Spotify" to Previous Track'
 
 shift + ctrl + alt - up : osascript -e 'tell application "Spotify" to set sound volume to 100'
-shift + ctrl + alt - down : osascript -e 'tell application "Spotify" to set sound volume to 20'
-
-# open finder to file storage drive
-shift + cmd - o : open /Users/tom
+shift + ctrl + alt - down : osascript -e 'tell application "Spotify" to set sound volume to 20':
 
 # volume contorl
 shift + alt - down : osascript -e "set volume output volume ((output volume of (get volume settings)) - 2)"
 shift + alt - up : osascript -e "set volume output volume ((output volume of (get volume settings)) + 2)"
 
-# open apps: terminal(t), browser(b)
-shift + cmd - b : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
-shift + cmd - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# flow app
+shift + alt - p : osascript ~/.config/flow.applescript

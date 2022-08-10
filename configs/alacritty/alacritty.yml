@@ -74,3 +74,5 @@ colors:
 
 key_bindings:
   - { key: Key3,     mods: Alt,     chars: "\x23"                        }
+  # open new window
+  - { key: N, mods: Command, action: CreateNewWindow }

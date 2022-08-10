@@ -36,7 +36,7 @@ yabai -m config external_bar                 all:28:0
 yabai -m config active_window_border_topmost on
 yabai -m config window_shadow                on
 yabai -m config window_opacity               off
-yabai -m config window_border_width          7
+yabai -m config window_border_width          4
 yabai -m config active_window_border_color   0xff3eb489
 yabai -m config normal_window_border_color   0xffaaaaaa
 
@@ -45,11 +45,17 @@ yabai -m signal --add event=space_changed action="osascript -e 'tell application
 yabai -m signal --add event=display_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
 
-yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" sticky=on layer=above manage=off
 
 # focus window when changing space or display_changed
 # focus window after active space changes
-yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
 
 # focus window after active display changes
-yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
+# apps to not manage (ignore)
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" sticky=on layer=above manage=off
+
