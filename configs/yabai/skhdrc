@@ -24,6 +24,9 @@ shift + alt - 7 : yabai -m window --space 7
 shift + alt - 8 : yabai -m window --space 8
 shift + alt - 9 : yabai -m window --space 9
 
+# Move focus to space
+# Yabai has the ability to do this, but only with scripting-addition
+
 # rotate tree
 alt - r : yabai -m space --rotate 90
 
@@ -77,4 +80,10 @@ shift + alt - down : osascript -e "set volume output volume ((output volume of (
 shift + alt - up : osascript -e "set volume output volume ((output volume of (get volume settings)) + 2)"
 
 # flow app
-shift + alt - p : osascript ~/.config/flow.applescript
+shift + alt - p : osascript ~/.config/scripts/flow.applescript
+
+
+lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
+shift + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+lalt - f : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
+

@@ -62,7 +62,7 @@
     ] ++ (with unstable; [
 
       # Command-Line tools (Needs latest versions)
-      neovim trivy grype syft
+      neovim grype syft
 
       # Development (Needs latest versions)
       terraform terragrunt ko go_1_18
