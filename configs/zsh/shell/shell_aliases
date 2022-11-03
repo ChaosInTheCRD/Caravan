@@ -26,6 +26,9 @@ alias spicetify="spicetify-cli "
 
 # Brew up new casks when they're added!
 alias yabrew="brew bundle install --file ~/.config/brew/Brewfile"
+alias sketch="brew services start sketchybar"
+alias resketch="brew services restart sketchybar"
+alias stopsketch="brew services stop sketchybar"
 
 # easily update home-manager config
 alias unix="home-manager switch"

@@ -12,13 +12,19 @@
     home.username = "tom";
 
     imports = [
-      ./configs/nvim/neovim.nix
+      # ./configs/nvim/neovim.nix
       ./configs/zsh/zsh.nix
       ./configs/git/git.nix
-      ./configs/ubersicht/ubersicht.nix
+      ./configs/sketchybar/sketchybar.nix
       ./configs/brew/brew.nix
       ./configs/alacritty/alacritty.nix
       ./configs/yabai/yabai.nix
+    ];
+
+    nixpkgs.overlays = [
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      }))
     ];
 
     # Let Home Manager install and manage itself.
@@ -53,7 +59,7 @@
         git gcc gnumake python38 nodejs cargo go yarn protobuf bazel bazelisk lima
 
         # Extra Stuff
-        bazel bazelisk lima 
+        bazel bazelisk lima neovim-nightly
 
         # fonts
 
@@ -62,10 +68,10 @@
     ] ++ (with unstable; [
 
       # Command-Line tools (Needs latest versions)
-      neovim grype syft
+      grype syft
 
       # Development (Needs latest versions)
       terraform terragrunt ko go_1_18
-  ]);
+  ]); 
 
   }

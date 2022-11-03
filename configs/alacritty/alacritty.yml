@@ -10,7 +10,7 @@ env:
 
 
 window:
-  opacity: 0.82
+  # opacity: 0.82
   decorations: buttonless
 
   # Values for `startup_mode`:
